@@ -17,11 +17,11 @@
 }
 .modalTop {
   background: rgba(0, 0, 0, 0.5);
-  flex: 1 0 auto;
+  flex: 1 0 1px;
 }
 .modalBottom {
   background: rgba(0, 0, 0, 0.5);
-  flex: 1 0 auto;
+  flex: 1 0 1px;
 }
 .modalDescription {
   background: white;

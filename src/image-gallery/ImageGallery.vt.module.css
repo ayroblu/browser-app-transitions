@@ -1,0 +1,24 @@
+.imageTransition {
+  view-transition-name: image;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTop {
+  background: rgba(0, 0, 0, 0.5);
+  flex: 1 0 1px;
+  view-transition-name: modal-top;
+}
+.modalBottom {
+  background: rgba(0, 0, 0, 0.5);
+  flex: 1 0 1px;
+  view-transition-name: modal-bottom;
+}
+::view-transition-new(modal-top),
+::view-transition-new(modal-bottom) {
+  animation-delay: 0.3s;
+}
