@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-width: 10px;
+  overflow: hidden;
+}
+.abs {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}

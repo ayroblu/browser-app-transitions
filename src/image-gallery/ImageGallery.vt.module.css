@@ -20,5 +20,5 @@
 }
 ::view-transition-new(modal-top),
 ::view-transition-new(modal-bottom) {
-  animation-delay: 0.3s;
+  animation-delay: 0.1s;
 }

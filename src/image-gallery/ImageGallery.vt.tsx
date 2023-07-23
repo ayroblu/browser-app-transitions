@@ -1,9 +1,10 @@
 import styles from "./ImageGallery.module.css";
 import vtStyles from "./ImageGallery.vt.module.css";
-import stylingPng from "../stories/assets/styling.png";
 import { Image } from "./Image";
 import React from "react";
 import { withViewTransition } from "./transition-helper";
+import { AspectRatio } from "./AspectRatio.vt";
+import { styling } from "./images";
 
 export const ImageGallery = () => {
   const [selectedIndex, setSelectedIndex] = React.useState<null | number>(null);
@@ -14,21 +15,31 @@ export const ImageGallery = () => {
         .fill(null)
         .map((_, i) => {
           return (
-            <Image
-              imageSrc={stylingPng}
+            <AspectRatio
               aspectRatio={1}
-              onClick={() =>
-                withViewTransition(() => setIsModalVisible(true), {
-                  before: () => setSelectedIndex(i),
-                })
-              }
-              customClassName={
+              originalAspectRatio={styling.width / styling.height}
+              parentClassName={
                 selectedIndex === i && !isModalVisible
                   ? vtStyles.imageTransition
                   : undefined
               }
-              key={i}
-            />
+            >
+              <Image
+                imageSrc={styling.path}
+                onClick={() =>
+                  withViewTransition(() => setIsModalVisible(true), {
+                    before: () => setSelectedIndex(i),
+                  })
+                }
+                // customClassName={
+                //   selectedIndex === i && !isModalVisible
+                //     ? vtStyles.imageTransition
+                //     : undefined
+                // }
+                style={{ objectFit: "initial" }}
+                key={i}
+              />
+            </AspectRatio>
           );
         }),
     [isModalVisible, selectedIndex]
@@ -51,12 +62,20 @@ export const ImageGallery = () => {
               Close
             </button>
           </div>
-          <Image
-            imageSrc={stylingPng}
-            customClassName={
+          <AspectRatio
+            aspectRatio={styling.width / styling.height}
+            originalAspectRatio={styling.width / styling.height}
+            parentClassName={
               selectedIndex !== null ? vtStyles.imageTransition : undefined
             }
-          />
+          >
+            <Image
+              imageSrc={styling.path}
+              // customClassName={
+              //   selectedIndex !== null ? vtStyles.imageTransition : undefined
+              // }
+            />
+          </AspectRatio>
           <div className={vtStyles.modalBottom}>
             <div className={styles.modalDescription}>
               <p>Opened {selectedIndex}</p>
